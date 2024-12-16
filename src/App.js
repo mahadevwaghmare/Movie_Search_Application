@@ -4,6 +4,8 @@ import { useState } from 'react'
 import axios from 'axios'
 import MovieInfoComponent from './componenets/MovieInfoComponent';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 const container = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,7 +84,7 @@ function App() {
 
   const fetchData = async (searchString) => {
     try {
-      const response = await axios.get(`https://www.omdbapi.com/?s=${searchString}&apikey=e58255a0`);
+      const response = await axios.get(`https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`);
       
       if (response.data.Response === "True") {
         updateMovieList(response.data.Search); 
