@@ -86,11 +86,11 @@ function App() {
     try {
       const response = await axios.get(`https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`);
       
-      if (response.data.Response === "True") {
+      if (response.data.Response) {
         updateMovieList(response.data.Search); 
       } else {
-        alert("No result found"); 
-        updateMovieList([]); 
+        alert("No movies found for the given search query.");
+        updateMovieList([]);
       }
     } catch (error) {
       console.error('An error occurred while fetching data:', error.message);
